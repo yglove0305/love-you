@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+>
+<head>
+  <meta charset="UTF-8" />
+  <title>☁️ 안채은의 시나모롤 월드 🐶</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Jua', sans-serif;
+      background: linear-gradient(to bottom, #f0faff, #fff0f8);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ☁️ 이모지 구름 */
+    .emoji-cloud {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0.3;
+      animation: floatCloud 60s linear infinite;
+    }
+
+    @keyframes floatCloud {
+      0% { transform: translateX(-10vw); }
+      100% { transform: translateX(110vw); }
+    }
+
+    .emoji-cloud:nth-child(1) { top: 5%; left: -10vw; animation-delay: 0s; }
+    .emoji-cloud:nth-child(2) { top: 20%; left: -15vw; animation-delay: 10s; }
+    .emoji-cloud:nth-child(3) { top: 40%; left: -20vw; animation-delay: 20s; }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+      background: #fff8ff;
+      border-bottom: 5px dashed #ffe0f4;
+      position: relative;
+      z-index: 1;
+    }
+
+    header h1 {
+      font-size: 3.5em;
+      color: #71c9f8;
+      text-shadow: 2px 2px white;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.2em;
+      color: #888;
+    }
+
+    .music-btn {
+      background: #ffe0f4;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 1em;
+      color: #555;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    .music-btn:hover {
+      background: #ffc8e8;
+    }
+
+    .main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 40px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      padding: 40px;
+      margin: 40px 0;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card h2 {
+      font-size: 2em;
+      color: #ff92d0;
+      margin-bottom: 20px;
+    }
+
+    .speech {
+      background: #fff6fb;
+      border: 3px dashed #ffc6e3;
+      padding: 25px;
+      border-radius: 30px;
+      font-size: 1.3em;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .speech::after {
+      content: "💬";
+      font-size: 2em;
+      position: absolute;
+      top: -25px;
+      left: 20px;
+    }
+
+    .character-img {
+      width: 260px;
+      margin: 30px auto;
+      border-radius: 40px;
+      border: 6px solid #d7f2ff;
+      box-shadow: 0 5px 15px rgba(173, 216, 230, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .character-img:hover {
+      transform: scale(1.05);
+    }
+
+    .photo-frame {
+      border: 8px dotted #ffc8ec;
+      background: #fff0fb;
+      border-radius: 30px;
+      padding: 15px;
+      width: 270px;
+      box-shadow: 0 10px 20px rgba(255, 190, 230, 0.4);
+      margin: auto;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      border-radius: 25px;
+    }
+
+    .photo-caption {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #999;
+    }
+
+    /* Swiper */
+    .swiper {
+      width: 90%;
+      padding: 20px 0;
+    }
+
+    .swiper-slide {
+      background: #fff0ff;
+      border: 3px dashed #ffc0e0;
+      border-radius: 20px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .swiper-slide img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .swiper-slide p {
+      color: #555;
+    }
+
+    .guestbook form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: auto;
+    }
+
+    .guestbook input, .guestbook textarea {
+      padding: 12px;
+      border: 2px solid #ffd6ec;
+      border-radius: 15px;
+      font-size: 1em;
+    }
+
+    .guestbook button {
+      padding: 10px 20px;
+      background: #ffaddb;
+      color: white;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .guestbook button:hover {
+      background: #ff94cd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #f8f8ff;
+      color: #888;
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .character-img,
+      .photo-frame {
+        width: 90%;
+      }
+
+      .card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ☁️ 떠다니는 구름 이모지 -->
+  <div class="emoji-cloud">☁️</div>
+  <div class="emoji-cloud">☁️</div>
+  <div class="emoji-cloud">☁️</div>
+
+  <!-- 헤더 -->
+  <header>
+    <h1>안채은의 시나모롤 월드 🐶💙</h1>
+    <p>귀여운 걸 좋아하는 안채은의 공간에 오신 걸 환영해요! ☁️🎀</p>
+    <audio id="bgm" autoplay loop>
+      <source src="https://bgmstore.net/media/track/file/16998/sanrio-theme.mp3" type="audio/mpeg" />
+    </audio>
+    <button onclick="toggleBGM()" class="music-btn">🎵 BGM 끄기</button>
+  </header>
+
+  <div class="main">
+
+    <!-- 소개 카드 -->
+    <section class="card">
+      <h2>💌 자기소개</h2>
+      <div class="speech">
+        안녕하세요! 저는 <strong>안채은</strong>이에요. 😄<br>
+        친구들과 친하게 지내는 걸 좋아하고<br>
+        <strong>시나모롤 🐶</strong>을 정말정말 사랑해요!<br>
+        그래서 홈페이지도 시나모롤 스타일로 꾸몄어요. 💖
+      </div>
+      <img class="character-img" src="https://upload.wikimedia.org/wikipedia/commons/4/42/Cinnamoroll.svg" alt="시나모롤">
+    </section>
+
+    <!-- 사진 카드 -->
+    <section class="card">
+      <h2>🌸 제 사진이에요</h2>
+      <div class="photo-frame">
+        <img src="https://ifh.cc/g/k52Zw4.jpg" alt="안채은 사진" />
+        <div class="photo-caption">😊 안채은 님</div>
+      </div>
+    </section>
+
+    <!-- 친구 캐릭터 슬라이더 -->
+    <section class="card">
+      <h2>🐾 시나모롤 친구들</h2>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="https://img.sanrio.com/character/cinnamoroll/chara_cappuccino.png" alt="카푸치노">
+            <p>카푸치노 🐾</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://img.sanrio.com/character/cinnamoroll/chara_mocha.png" alt="모카">
+            <p>모카 ☕</p>
+          </div>
+          <div class="swiper-slide">
+            <img src="https://img.sanrio.com/character/cinnamoroll/chara_espresso.png" alt="에스프레소">
+            <p>에스프레소 🧋</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 방명록 -->
+    <section class="card guestbook">
+      <h2>📬 방명록</h2>
+      <form onsubmit="alert('메시지가 등록되었어요! 💌'); return false;">
+        <input type="text" placeholder="이름" required>
+        <textarea placeholder="응원 메시지를 남겨주세요!" required></textarea>
+         <a href="#" class="button">💬 친구가 되고 싶다면 클릭!</a>
+      </form>
+    </section>
+
+  </div>
+
+  <!-- 푸터 -->
+  <footer>
+    ⓒ 2025 안채은 | 시나모롤 팬홈 ✨<br>
+    배경음악: Sanrio Theme 🎵
+  </footer>
+
+  <!-- JS: Swiper & BGM -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    new Swiper('.mySwiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 20,
+      centeredSlides: true,
+      loop: true
+    });
+
+    function toggleBGM() {
+      const audio = document.getElementById('bgm');
+      const btn = document.querySelector('.music-btn');
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '🎵 BGM 끄기';
+      } else {
+        audio.pause();
+        btn.textContent = '🎵 BGM 켜기';
+      }
+    }
+  </script>
+
+</body>
+</html>
